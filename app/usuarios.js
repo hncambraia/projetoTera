@@ -55,15 +55,15 @@ function validaLogin (usuario, senha){
     return ["",usuarioValidado];
    }
    else if (senhaValidado == false && usuarioLocalizado){
-    mensagemFinal = "senha invalida"
-    return [mensagemFinal,usuarioValidado];
+    mensagemFinal = "senha invalida"    
    }
    else{
-    mensagemFinal = "usuario nao localizado";
-    return [mensagemFinal,usuarioValidado];
+    mensagemFinal = "usuario nao localizado";    
    }
    
-   
+   if (mensagemFinal !=""){
+    window.alert(mensagemFinal)
+   }
 }
 
 function imprimeDadosUsuarios(id){
