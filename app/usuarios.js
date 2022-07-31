@@ -41,7 +41,7 @@ function validaLogin (usuario, senha){
         if(usuarios[index].senha==senha){
               
             senhaValidado = true;
-            usuarioValidado = index;
+            usuarioValidado = usuarios[index].id;
             break;        
         }        
     }    
@@ -67,11 +67,16 @@ function validaLogin (usuario, senha){
 }
 
 function imprimeDadosUsuarios(id){
-    document.getElementById('nome').textContent = "Nome: " + usuarios[id].nome
-    document.getElementById('login').textContent = "Login: " + usuarios[id].login
-    document.getElementById('email').textContent = "E-mail: " + usuarios[id].email
-    document.getElementById('bio').textContent = "Bio: " + usuarios[id].bio
-    document.getElementById('avatar').src = usuarios[id].foto
+    
+    var usuarioFiltrado = usuarios.filter(function(el){
+        return el.id== id;
+    })
+    console.log(usuarioFiltrado)
+    document.getElementById('nome').textContent = "Nome: " + usuarioFiltrado[0].nome
+    document.getElementById('login').textContent = "Login: " + usuarioFiltrado[0].login
+    document.getElementById('email').textContent = "E-mail: " + usuarioFiltrado[0].email
+    document.getElementById('bio').textContent = "Bio: " + usuarioFiltrado[0].bio
+    document.getElementById('avatar').src = usuarioFiltrado[0].foto
     getUser(id)
 }
 
