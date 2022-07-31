@@ -67,6 +67,16 @@ function validaLogin (usuario, senha){
 }
 
 function imprimeDadosUsuarios(id){
-    document.getElementById('h1').textContent = usuarios[id].nome
+    document.getElementById('nome').textContent = "Nome: " + usuarios[id].nome
+    document.getElementById('login').textContent = "Login: " + usuarios[id].login
+    document.getElementById('email').textContent = "E-mail: " + usuarios[id].email
+    document.getElementById('bio').textContent = "Bio: " + usuarios[id].bio
     document.getElementById('avatar').src = usuarios[id].foto
+    getUser(id)
+}
+
+
+function getUser(id){
+    document.getElementById('urlProfile').href = "profile.html?"+id
+    document.getElementById('urlFeed').href = "feed.html?"+id
 }

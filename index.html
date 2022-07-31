@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Coffee Lover's - A rede social para quem ama café - Login</title>
+    <link rel="icon" type="imagem/png" href="/img/icone.png" />
     <link rel="stylesheet" href="style/styles.css">
 </head>
-<body>
-    <label for="login">Login</label>    
-    <input id="login" type="text"> <br>
-    <label for="senha">Senha</label>
-    <input id="senha"type="password"><br>
-    <button onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Login</button>
-    <br>
-    <h6 id="dadosInvalidos"></h6>
+<body id="bodyLogin">
+    <center>
     
+    <div id="divLogin" >
+            
+        
+            
+        <label for="login">Login</label>    
+        <input id="login" type="text"> <br>
+        <label for="senha">Senha</label>
+        <input id="senha"type="password"><br>
+        <button onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Login</button>
+        
+        <h6 id="dadosInvalidos"></h6>
+    
+    
+    </div>
+</center>
     <script src="app/usuarios.js"></script>
 </body>
 </html>
