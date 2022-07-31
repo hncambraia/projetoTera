@@ -33,6 +33,11 @@ let feed = [
         "texto":"texto 5",        
         
         "idusuario":"1"
+    }   ,
+    {
+        "id":6,
+        "titulo":"titulo 6",
+        "texto":"texto 6"        
     }   
 
 ]
@@ -40,7 +45,7 @@ let text=""
 var invalidEntries = 0;
 
 var feedFiltrado = feed.filter(function(el){
-    return el.idusuario== location.search.substring(1);
+    return el.idusuario== location.search.substring(1) || el.idusuario == undefined;
 })
 
 
