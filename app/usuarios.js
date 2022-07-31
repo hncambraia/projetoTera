@@ -61,9 +61,9 @@ function validaLogin (usuario, senha){
     mensagemFinal = "usuario nao localizado";    
    }
    
-   if (mensagemFinal !=""){
-    window.alert(mensagemFinal)
-   }
+   
+    document.getElementById('dadosInvalidos').textContent = mensagemFinal        
+   
 }
 
 function imprimeDadosUsuarios(id){
