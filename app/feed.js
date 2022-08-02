@@ -51,14 +51,14 @@ var feedFiltrado = feed.filter(function(el){
 
 for (var index =0; index < feed.length;index++)   {   
     var post=""
-    post = "<h1>" + feedFiltrado[index].titulo +"</h1>" + 
-                "<h6>" + feedFiltrado[index].texto+"</h6>" 
-                console.log(feedFiltrado[index].imagem)
+    post = "<div class='posts'> <h1>" + feedFiltrado[index].titulo +"</h1>" + 
+                "<h3>" + feedFiltrado[index].texto+"</h3> </div>" 
+               
     if (feedFiltrado[index].imagem != undefined)
         {   
-            post ="<h1>" + feedFiltrado[index].titulo +"</h1>" + 
-            "<h6>" + feedFiltrado[index].texto+"</h6>"+
-                "<img src='" + feedFiltrado[index].imagem +"'</img>"
+            post ="<div class='posts'> <h1>" + feedFiltrado[index].titulo +"</h1>" + 
+            "<h3>" + feedFiltrado[index].texto+"</h3>"+
+                "<img src='" + feedFiltrado[index].imagem +"'</img> </div>"
         }
-    document.getElementById('titulo').innerHTML += post;
+    document.getElementById('postsFeed').innerHTML += post;
 }
