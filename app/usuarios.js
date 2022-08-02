@@ -58,7 +58,7 @@ function validaLogin (usuario, senha){
     mensagemFinal = "senha invalida"    
    }
    else{
-    mensagemFinal = "usuario nao localizado";    
+    mensagemFinal = "usuário não localizado!";    
    }
    
    

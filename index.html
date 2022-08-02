@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Lover's - A rede social para quem ama café - Login</title>
     
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="style/login_styles.css">
 </head>
 <body id="bodyLogin">
     <center>
     
     <div id="divLogin" >
             
-        
-            
-        <label for="login">Login</label>    
-        <input id="login" type="text"> <br>
-        <label for="senha">Senha</label>
-        <input id="senha"type="password"><br>
-        <button onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Login</button>
+        <img id=logoLogin src="img/logo.png" alt="logo escrito locoffe e simbolo" width="200px">
+        <div id=loginCaixa>
+            <label for="login">Login</label>    
+            <input id="login" type="text"> <br>
+        </div>
+        <div id=senhaCaixa>
+            <label for="senha">Senha</label>
+            <input id="senha"type="password"><br>
+        </div>
+        <button id="botao" onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Login</button>
         
         <h6 id="dadosInvalidos"></h6>
     
