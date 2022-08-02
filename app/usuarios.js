@@ -49,13 +49,12 @@ function validaLogin (usuario, senha){
    
    if (usuarioLocalizado && senhaValidado)
    {
-   // mensagemFinal = "Usuário e Senha validado com sucesso"
-   
-   window.location.href = "feed.html?" + usuarioValidado;
-    return ["",usuarioValidado];
+       window.location.href = "feed.html?" + usuarioValidado;
+        return ["",usuarioValidado];
    }
+
    else if (senhaValidado == false && usuarioLocalizado){
-    mensagemFinal = "senha invalida"    
+            mensagemFinal = "senha invalida"    
    }
    else{
     mensagemFinal = "usuário não localizado!";    
