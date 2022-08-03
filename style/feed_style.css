@@ -52,21 +52,15 @@ body, html {
       height: 100%;
       float: left;
       border-collapse: collapse;
-      border-radius: 10pt;
-      
+      border-radius: 10pt;      
       box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-
-
       background-color: white;
       border-radius: 10pt;
-      
-      
-      
+      margin-top: 20px;
 
-   
-      
-  
   }
+
+
   
   .painelFeedCentral {
       width: 80%;
