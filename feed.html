@@ -9,19 +9,30 @@
     <link rel="stylesheet" type="text/css" href="style/cabecalho.css"> </link>
 </head>
 <body onload="getUser( location.search.substring(1))">
-
-
-
-    <div class="container">
+    <header>
+    <div class="barra-superior">
         <div class="cabecalho">
-
-            <nav>
-                <a class="menuNavegavel" href="" id="urlProfile">Profile</a>
-                <a class="menuNavegavel" href="" id="urlFeed">Feed</a>
-                <a class="menuNavegavel" href="index.html" >Logout</a>
-                <h1> Cafés do Brasil </h1>
-            </nav>
+            <div class="caixaCabecalho">
+                <div class="navegadorEsquerdo">
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
+                    </div>
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
+                    </div>
+                </div>
+                    <img class="logoCabecalho" src="img/logo.png" alt="logo escrito locoffe e grãos de cafe">
+                <div class="navegadorDireito">
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="index.html" >&nbsp Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </header>
         <div class="painelLateralEsquerdo">
             <container>
                 <ul>
@@ -31,7 +42,7 @@
                        <li> <a href="https://reviewcafe.com.br/dicas-e-receitas/cafe-conilon/"> Conilon </a> </li>
                        <li> <a href="https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-mercado-fisico-tipo-6-duro"> Bebida Dura (Cotação) </a> </li>
                        <li> <a href="https://www.lojinhauai.com/blog/bebida-mole/"> Bebida Mole e Dura </a> </li> 
-                 </div>        
+                    </div>        
                 </ul>
             </container>
             <container>

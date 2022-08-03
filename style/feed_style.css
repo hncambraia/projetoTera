@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+body{
+    margin: 0px;
+    font-family: Montserrat;
+    background-color: white;
+    display: block;
+}
 
 h1,h3 {
     text-align: center;
@@ -35,12 +42,12 @@ img{
 }
 
 
-body, html {
+/* body, html {
 
     
     padding-top: 40px;
     background-color: lavenderblush;
-  }
+  } */
   
   .container {
     width: 100%;
