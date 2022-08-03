@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Lover's - A rede social para quem ama café - Profile</title>
     <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" type="text/css" href="style/cabecalho.css"> </link>
+    <link rel="stylesheet" type="text/css" href="style/profile.css"> </link>
 </head>
 <body onload="imprimeDadosUsuarios( location.search.substring(1))">
-    <nav>
-        <a href="" id="urlProfile">Profile</a>
-        <a href="" id="urlFeed">Feed</a>
-        <a href="index.html" >Logout</a>
-    </nav>
-    <div id="divProfile">
+    <div class="cabecalho">
+
+        <nav>
+            <a class="menuNavegavel" href="" id="urlProfile">Profile</a>
+            <a class="menuNavegavel" href="" id="urlFeed">Feed</a>
+            <a class="menuNavegavel" href="index.html" >Logout</a>
+            <h1> Cafés do Brasil </h1>
+        </nav>
+    </div>
+    <div id="painelCeltral">
         <h6 id="nome"></h6>
         <h6 id="login"></h6>
         <h6 id="email"></h6>
