@@ -1,83 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Lover's - A rede social para quem ama café</title>
-    <link rel="stylesheet" type="text/css" href="style/feed_style.css"> </link>
-    <link rel="stylesheet" type="text/css" href="style/cabecalho.css"> </link>
+    <link rel="stylesheet" type="text/css" href="style/feed_style.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="style/cabecalho.css">
+    </link>
 </head>
+
 <body onload="getUser( location.search.substring(1))">
     <header>
-    <div class="barra-superior">
-        <div class="cabecalho">
-            <div class="caixaCabecalho">
-                <div class="navegadorEsquerdo">
-                    <div class="linkNavegador">
-                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                        <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
+        <div class="barra-superior">
+            <div class="cabecalho">
+                <div class="caixaCabecalho">
+                    <div class="navegadorEsquerdo">
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
+                        </div>
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
+                        </div>
                     </div>
-                    <div class="linkNavegador">
-                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                        <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
-                    </div>
-                </div>
                     <img class="logoCabecalho" src="img/logo.png" alt="logo escrito locoffe e grãos de cafe">
-                <div class="navegadorDireito">
-                    <div class="linkNavegador">
-                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                        <a class="menuNavegavel" href="index.html" >&nbsp Logout</a>
+                    <div class="navegadorDireito">
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="index.html">&nbsp Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
-        <div class="painelLateralEsquerdo">
-            <container>
-                <ul>
-                  <div>
-                       <h3> Links na net </h3>
-                       <li> <a href="https://pt.wikipedia.org/wiki/Coffea_arabica"> Arábica </a> </li>
-                       <li> <a href="https://reviewcafe.com.br/dicas-e-receitas/cafe-conilon/"> Conilon </a> </li>
-                       <li> <a href="https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-mercado-fisico-tipo-6-duro"> Bebida Dura (Cotação) </a> </li>
-                       <li> <a href="https://www.lojinhauai.com/blog/bebida-mole/"> Bebida Mole e Dura </a> </li> 
-                    </div>        
-                </ul>
-            </container>
-            <container>
-                <ul>
-                    <div>
-                        <h3> Links posteriores </h3>
-                        <li> Amigos de grãos </li>
-                        <li> Safras </li>
-                        <li> Plantio </li>
-                        <li> Tirica e outras pragas </li>
-                        <li> Fazendas pelo Brasil </li>
-                    </div>
-                </ul>
-            </container>
-            <container>
-                <ul>
-                    <div>
-                        <h3> caixa-alguma </h3>
-                        <li> Palavra do agronomo </li>
-                        <li> Receitas </li>
-                 
-                    </div>
-                </ul>
-            </container>
-        </div>
-
+    <main class="painelGeral">
         <div class="painelFeedCentral">
             <div id="postsFeed"> </div>
+            <script src="app/usuarios.js"></script>
+            <script src="app/feed.js"></script>
         </div>
+        <div class="painelLateralDireito">
+            <ul>
+                <h3> Em Alta </h3>
+                <li> <a href="https://pt.wikipedia.org/wiki/Coffea_arabica"> Arábica </a> </li>
+                <li><a href="https://reviewcafe.com.br/dicas-e-receitas/cafe-conilon/"> Conilon </a></li>
+                <li><a href="https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-mercado-fisico-tipo-6-duro"> Bebida Dura (Cotação)</a></li>
+                <li><a href="https://www.lojinhauai.com/blog/bebida-mole/"> Bebida Mole e Dura </a></li>
+            </ul>
+            <ul>
+                <h3> Link Uteis </h3>
+                <li> Amigos de grãos </li>
+                <li> Safras </li>
+                <li> Plantio </li>
+                <li> Tirica e outras pragas </li>
+                <li> Fazendas pelo Brasil </li>
+            </ul>
+        </div>
+    </main>
 
-      </div>
-
-    
-    <script src="app/usuarios.js"></script>
-    <script src="app/feed.js"></script>
-    
 </body>
+
 </html>
