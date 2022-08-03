@@ -52,13 +52,13 @@ var feedFiltrado = feed.filter(function(el){
 for (var index =0; index < feed.length;index++)   {   
     var post=""
     post = "<div class='posts'> <h1>" + feedFiltrado[index].titulo +"</h1>" + 
-                "<h3>" + feedFiltrado[index].texto+"</h3> </div>" 
+                "<h3>" + feedFiltrado[index].texto+"</h3>         <br>    <input id='pesquisa'> <br> <button id='botaoComentar'>Comentar</button><br></div>" 
                
     if (feedFiltrado[index].imagem != undefined)
         {   
             post ="<div class='posts'> <h1>" + feedFiltrado[index].titulo +"</h1>" + 
             "<h3>" + feedFiltrado[index].texto+"</h3>"+
-                "<img src='" + feedFiltrado[index].imagem +"'</img> </div>"
+                "<img src='" + feedFiltrado[index].imagem +"'</img>   <br>  <input id='pesquisa'> <br> <button id='botaoComentar'>Comentar</button><br></div>"
         }
     document.getElementById('postsFeed').innerHTML += post;
 }

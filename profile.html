@@ -7,26 +7,53 @@
     <title>Coffee Lover's - A rede social para quem ama café - Profile</title>
     <link rel="stylesheet" href="style/styles.css">
     <link rel="stylesheet" type="text/css" href="style/cabecalho.css"> </link>
+
     <link rel="stylesheet" type="text/css" href="style/profile.css"> </link>
 </head>
 <body onload="imprimeDadosUsuarios( location.search.substring(1))">
-    <div class="cabecalho">
-
-        <nav>
-            <a class="menuNavegavel" href="" id="urlProfile">Profile</a>
-            <a class="menuNavegavel" href="" id="urlFeed">Feed</a>
-            <a class="menuNavegavel" href="index.html" >Logout</a>
-            <h1> Cafés do Brasil </h1>
-        </nav>
-    </div>
+    <header>
+        <div class="barra-superior">
+            <div class="cabecalho">
+                <div class="caixaCabecalho">
+                    <div class="navegadorEsquerdo">
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
+                        </div>
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
+                        </div>
+                    </div>
+                    <img class="logoCabecalho" src="img/logo.png" alt="logo escrito locoffe e grãos de cafe">
+                    <div class="navegadorDireito">
+                        <div class="linkNavegador">
+                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                            <a class="menuNavegavel" href="index.html">&nbsp Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
     <div id="painelCeltral">
-        <h6 id="nome"></h6>
-        <h6 id="login"></h6>
-        <h6 id="email"></h6>
-        <h6 id="bio"></h6>
-
-        <img id="avatar" src="" width="80" height="80">
-        <script src="app/usuarios.js"></script>
+    <table>
+        <tr>
+            <td> <img id="avatar" src="" width="80" height="80"></td>
+            <td>        <h6 id="nome"></h6>
+                <h6 id="login"></h6>
+                <h6 id="email"></h6>
+                <h6 id="bio"></h6>
+                
+        </td>
+        </tr>
+        <br>
+        
+    </table>
+  
+    
     </div>
+    <button id="botao" onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Editar</button>
+
+    <script src="app/usuarios.js"></script>
 </body>
 </html>
