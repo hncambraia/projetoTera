@@ -2,7 +2,7 @@ let feed = [
     {
         "id":1,
         "titulo":"titulo 1",
-        "texto":"texto 1",        
+        "texto":"texto 1 <br>texto 1213",        
         "imagem":"img/cafe.jpg",
         "idusuario":"1"
     },

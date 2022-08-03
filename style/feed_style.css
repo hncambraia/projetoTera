@@ -31,6 +31,7 @@ a{  text-decoration: none;}
 img{
     width: 250px;
     height: 250px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .menuNavegavel{
@@ -41,7 +42,7 @@ img{
 body, html {
     width: 100%;
     height: 100%;
-    margin: 10px;
+    
     padding-top: 40px;
     background-color: lavenderblush;
   }
@@ -52,15 +53,16 @@ body, html {
   }
   
   .painelLateralEsquerdo {
-      width: 25%;
+      width: 10%;
       height: 100%;
       float: left;
       border-collapse: collapse;
+      border-radius: 10pt;
   
   }
   
   .painelFeedCentral {
-      width: 50%;
+      width: 90%;
       height: 100%;
       float: left;
       border-collapse: collapse;
@@ -69,13 +71,7 @@ body, html {
    
   }
   
-  .painelLateralDireito {
-    width: 25%;
-    height: 100%;
-    float: right;
-    background-color: lavenderblush;
-    border-collapse: collapse;
-  }
+
   
   .cabecalho {
     z-index: 1;
