@@ -26,6 +26,16 @@ var usuarios = [
         "bio":"Braulio",
         "foto":"img/3.jpg"
     }   
+    ,
+    {
+        "id":4,
+        "nome":"Tetsuo Matsumura",
+        "login":"tetsuo",
+        "email":"tetsuomatsumura@tera.com",
+        "senha": "12345678",
+        "bio":"Tetsuo Matsumura",
+        "foto":"img/4.jpg"
+    }   
 ]
 
 function validaLogin (usuario, senha){
