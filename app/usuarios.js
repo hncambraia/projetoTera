@@ -63,11 +63,11 @@ function validaLogin (usuario, senha){
         return ["",usuarioValidado];
    }
 
-   else if (senhaValidado == false && usuarioLocalizado){
-            mensagemFinal = "senha invalida"    
-   }
+//    else if (senhaValidado == false && usuarioLocalizado){
+//             mensagemFinal = "senha invalida"    
+//    }
    else{
-    mensagemFinal = "usuario nao localizado";    
+    mensagemFinal = "Usuário ou senha inválidos!"    
    }
    
    
