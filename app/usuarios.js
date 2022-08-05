@@ -70,8 +70,7 @@ function validaLogin (usuario, senha){
     mensagemFinal = "Usuário ou senha inválidos!"    
    }
    
-   
-    document.getElementById('dadosInvalidos').textContent = mensagemFinal        
+    window.alert (mensagemFinal);
    
 }
 
