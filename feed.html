@@ -12,7 +12,7 @@
     </link>
 </head>
 
-<body onload="getUser( location.search.substring(1))">
+<body onload="getUser( location.search.substring(1)); imprimeFeed(location.search.substring(1))">
     <header>
         <div class="barra-superior">
             <div class="cabecalho">
@@ -38,24 +38,23 @@
             </div>
     </header>
     <main class="painelGeral">
-        <div class="painelLateralEsquerdo">
-            <div >
-                <label for="pesquisa">Pesquisar</label>
-                <input id="pesquisa"><br>
-                <button id="botao">Pesquisar</button>
-<br>
-                <label for="postar">Novo Artigo</label>
-                <input id="postar"><br>
-                <button id="botao">Postar</button>
-
-            </div>
-        </div>
+   
         <div class="painelFeedCentral">
             <div id="postsFeed"> </div>
             <script src="app/usuarios.js"></script>
             <script src="app/feed.js"></script>
         </div>
         <div class="painelLateralDireito">
+            <div >
+                <label for="pesquisa">Pesquisar</label>
+                <input id="pesquisaFeed"><br>
+                <button id="botao" onclick="pesquisaFeed()">Pesquisar</button>
+<br>
+                <label for="postar">Novo Artigo</label>
+                <input id="postar"><br>
+                <button id="botao" onclick="postarFeed()">Postar</button>
+
+            </div>
             <ul>
                 <h3>Em Alta </h3>
                 <li> <a target="_blank" href="https://pt.wikipedia.org/wiki/Coffea_arabica"> Arábica </a> </li>

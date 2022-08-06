@@ -36,15 +36,7 @@ body {
     padding: 10px;
     border-radius: 10px;
 }
-.painelLateralEsquerdo{
-    background-color: #F8F4EB;
 
-
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 10px;
-}
 .posts {
     background-color: #F8F4EB;
     display: flex;
@@ -71,7 +63,11 @@ img {
 }
 
 
-#pesquisa{
+#pesquisaFeed{
+    display: flex;
+    border-radius: 10px;
+}
+#comentario{
     display: flex;
     border-radius: 10px;
 }

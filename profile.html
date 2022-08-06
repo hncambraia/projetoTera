@@ -53,7 +53,15 @@
     
     </div>
     <button id="botao" onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Editar</button>
-
+    <div class="painelLateralDireito">
+        <center>
+        <label for="pesquisa">Pesquisar</label><br>
+        <input id="pesquisa"><br>
+        <button id="botaoPesquisar" onclick="pesquisaAmigos()">Pesquisar</button>
+    
+        <div id="listaAmigos"></div>
+    </center>
+    </div>
     <script src="app/usuarios.js"></script>
 </body>
 </html>

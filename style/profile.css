@@ -1,5 +1,5 @@
 #painelCeltral{
-    width: 30%;
+    width: 30%px;
 background-color: white;
 border-radius: 10pt;
 padding: 34px 24px 10px 24px;
@@ -65,4 +65,51 @@ img {
     background-color: #F8F4EB;
     color: #4B3128;
     border: 1px solid #F8F4EB;
+}
+.painelLateralDireito{
+    background-color: #F8F4EB;
+float: right;
+position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    top: 150px;   
+    border-radius: 10px;
+}
+
+
+.amigo {
+    background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin-right: 10px;
+    padding: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.imgAmigo{
+    width: 30px;
+    height: 30px;
+}
+#pesquisa{
+    display: flex;
+    border-radius: 10px;
+}
+#botaoPesquisar{
+    background-color: #4B3128;
+    font-weight: bold;
+    font-family: Montserrat;
+    color: #F8F4EB;
+    border: #F8F4EB;
+    padding: 5px;
+
+    position: relative;
+
+
+    
+    
+  
 }
