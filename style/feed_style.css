@@ -29,8 +29,6 @@ body {
 
 .painelLateralDireito{
     background-color: #F8F4EB;
-
-
     margin-top: 10px;
     margin-left: 10px;
     padding: 10px;
@@ -42,10 +40,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 350px;
-    
+    width: 350px;  
     margin-top: 10px;
     margin-right: 10px;
+    padding: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.barra-superior {
+    background-color: #F8F4EB;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -71,9 +80,14 @@ img {
     display: flex;
     border-radius: 10px;
 }
-#postar{
+#postarTitulo{
     display: flex;
-    height: 100px;
+width: 50%;
+    border-radius: 10px;
+}
+#postarTexto{
+    display: flex;
+width: 50%;
     border-radius: 10px;
 }
 
@@ -84,10 +98,7 @@ img {
     color: #F8F4EB;
     border: #F8F4EB;
     padding: 5px;
-
     position: relative;
-
-
     left: 50%;
     transform: translate(-50%);
   
@@ -108,11 +119,7 @@ img {
     color: #F8F4EB;
     border: #F8F4EB;
     padding: 5px;
-
     position: relative;
-
-
-  
 }
 
 #botaoComentar:hover{

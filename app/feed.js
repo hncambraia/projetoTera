@@ -75,8 +75,8 @@ function pesquisaFeed() {
 function postarFeed() {
     var novoFeed = {
         "id": feed.length + 1,
-        "titulo": "Titulo " + document.getElementById("postar").value,
-        "texto": document.getElementById("postar").value,
+        "titulo":  document.getElementById("postarTitulo").value,
+        "texto": document.getElementById("postarTexto").value,
         "idusuario": location.search.substring(1)
     }
 

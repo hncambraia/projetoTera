@@ -14,64 +14,70 @@
 
 <body onload="getUser( location.search.substring(1)); imprimeFeed(location.search.substring(1))">
     <header>
-        <div class="barra-superior">
-            <div class="cabecalho">
-                <div class="caixaCabecalho">
-                    <div class="navegadorEsquerdo">
-                        <div class="linkNavegador">
-                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                            <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
-                        </div>
-                        <div class="linkNavegador">
-                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                            <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
-                        </div>
+
+        <div class="cabecalho">
+            <div class="caixaCabecalho">
+                <div class="navegadorEsquerdo">
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="" id="urlProfile">&nbsp Profile &nbsp</a>
                     </div>
-                    <img class="logoCabecalho" src="img/logo.png" alt="logo escrito locoffe e grãos de cafe">
-                    <div class="navegadorDireito">
-                        <div class="linkNavegador">
-                            <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
-                            <a class="menuNavegavel" href="index.html">&nbsp Logout</a>
-                        </div>
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="" id="urlFeed">&nbsp Feed</a>
+                    </div>
+                </div>
+                <img class="logoCabecalho" src="img/logo.png" alt="logo escrito locoffe e grãos de cafe">
+                
+                <div class="navegadorDireito">
+                    <div class="linkNavegador">
+                        <img class="iconLogout" src="img/logout.png" alt="icon de logout" width="20px">
+                        <a class="menuNavegavel" href="index.html">&nbsp Logout</a>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="barra-superior">
+            <label for="postarTitulo">Título</label>
+            <input id="postarTitulo">
+            <label for="postarTexto">Texto</label>
+            <input id="postarTexto">
+            <button id="botao" onclick="postarFeed()">Postar</button>
+        </div>
     </header>
+    
     <main class="painelGeral">
-   
         <div class="painelFeedCentral">
             <div id="postsFeed"> </div>
             <script src="app/usuarios.js"></script>
             <script src="app/feed.js"></script>
         </div>
         <div class="painelLateralDireito">
-            <div >
+            <div>
                 <label for="pesquisa">Pesquisar</label>
                 <input id="pesquisaFeed"><br>
                 <button id="botao" onclick="pesquisaFeed()">Pesquisar</button>
-<br>
-                <label for="postar">Novo Artigo</label>
-                <input id="postar"><br>
-                <button id="botao" onclick="postarFeed()">Postar</button>
-
+                <br>
             </div>
             <ul>
                 <h3>Em Alta </h3>
                 <li> <a target="_blank" href="https://pt.wikipedia.org/wiki/Coffea_arabica"> Arábica </a> </li>
-                <li><a target="_blank"href="https://reviewcafe.com.br/dicas-e-receitas/cafe-conilon/"> Conilon </a></li>
-                <li><a target="_blank"href="https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-mercado-fisico-tipo-6-duro"> Bebida Dura (Cotação)</a></li>
-                <li><a target="_blank"href="https://www.lojinhauai.com/blog/bebida-mole/"> Bebida Mole e Dura </a></li>
+                <li><a target="_blank" href="https://reviewcafe.com.br/dicas-e-receitas/cafe-conilon/"> Conilon </a>
+                </li>
+                <li><a target="_blank"
+                        href="https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-mercado-fisico-tipo-6-duro">
+                        Bebida Dura (Cotação)</a></li>
+                <li><a target="_blank" href="https://www.lojinhauai.com/blog/bebida-mole/"> Bebida Mole e Dura </a></li>
             </ul>
             <ul>
                 <h3>Link Uteis</h3>
-                <li><a target="_blank" href="https://hubdocafe.com.br">  HUB do Café </a>  </li>
-                <li><a target="_blank" href="https://www.google.com/search?q=safras+cafe&sxsrf=ALiCzsajbYpdkrpUtokLsNjD_H_b1-S9gw%3A1659567889065&ei=Ef_qYpnBA-vx1sQPwfaZgAU&ved=0ahUKEwjZjYiU5Kv5AhXruJUCHUF7BlAQ4dUDCA4&uact=5&oq=safras+cafe&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEB4QFjIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjIGCAAQHhAWOgcIABBHELADOgcIABCwAxBDOgoIABDkAhCwAxgBOhIILhDHARDRAxDIAxCwAxBDGAI6EgguEMcBEK8BEMgDELADEEMYAjoPCC4Q1AIQyAMQsAMQQxgCOgUIABCABDoECAAQQzoLCC4QgAQQxwEQrwE6CAgAEB4QFhAKOgQIABANOgYIABAeEA06CAgAEB4QDRAFOgUIIRCgAToICCEQHhAWEB06CAgAEB4QCBANSgQIQRgASgQIRhgBUHBY6SVg7ChoBnABeACAAa4BiAHZCpIBBDAuMTCYAQCgAQHIARPAAQHaAQYIARABGAnaAQYIAhABGAg&sclient=gws-wiz">  Safras  de Café </a>  </li>
-  
+                <li><a target="_blank" href="https://hubdocafe.com.br"> HUB do Café </a> </li>
+                <li><a target="_blank"
+                        href="https://www.google.com/search?q=safras+cafe&sxsrf=ALiCzsajbYpdkrpUtokLsNjD_H_b1-S9gw%3A1659567889065&ei=Ef_qYpnBA-vx1sQPwfaZgAU&ved=0ahUKEwjZjYiU5Kv5AhXruJUCHUF7BlAQ4dUDCA4&uact=5&oq=safras+cafe&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEB4QFjIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjIGCAAQHhAWOgcIABBHELADOgcIABCwAxBDOgoIABDkAhCwAxgBOhIILhDHARDRAxDIAxCwAxBDGAI6EgguEMcBEK8BEMgDELADEEMYAjoPCC4Q1AIQyAMQsAMQQxgCOgUIABCABDoECAAQQzoLCC4QgAQQxwEQrwE6CAgAEB4QFhAKOgQIABANOgYIABAeEA06CAgAEB4QDRAFOgUIIRCgAToICCEQHhAWEB06CAgAEB4QCBANSgQIQRgASgQIRhgBUHBY6SVg7ChoBnABeACAAa4BiAHZCpIBBDAuMTCYAQCgAQHIARPAAQHaAQYIARABGAnaAQYIAhABGAg&sclient=gws-wiz">
+                        Safras de Café </a> </li>
             </ul>
         </div>
-       
     </main>
-
 </body>
 
 </html>
