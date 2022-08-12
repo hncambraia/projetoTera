@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .main {
+    min-height: 100vh;
+  }
+  
+  .main,
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /*conteudo está ocupando o espaço disponível, pois ele pode crescer para ocupar o espaço*/
+    /*
+    flex-shrink: 1;
+    flex-basis: auto;
+    */
+  }
+  
+  header,
+  footer {
+  
+    height: 10vh;
+    padding: 2em;
+    background: #4B3128;
+ 
+  }
+  
+  .sidebar {
+    background-color: #F8F4EB;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+#pesquisaFeed{
+  display: flex;
+  border-radius: 10px;
+}
+  .content-section {
+    flex: 1 1 auto;
+  }
+  
+  .sidebar-1,
+  .sidebar-2 {
+    min-height: 20vh;
+    min-width: 20vw;
+  }
+  
+ 
+#botao{
+  background-color: #4B3128;
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #F8F4EB;
+  border: #F8F4EB;
+  padding: 5px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+
+}
+
+#botao:hover{
+  background-color: #F8F4EB;
+  color: #4B3128;
+  border: 1px solid #F8F4EB;
+}
+
+
+
+  
+  @media (min-width: 600px) {
+    .main-content {
+      flex-direction: row;
+    }
+  }
+  
+.logoCabecalho{
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: auto;
+  box-shadow: none;
+}
+.posts {
+  background-color: #F8F4EB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;  
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
