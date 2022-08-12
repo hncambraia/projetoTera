@@ -128,5 +128,5 @@ function pesquisaAmigos()
 
 function getUser(id) {
     document.getElementById('urlProfile').href = "profile.html?" + id
-    document.getElementById('urlFeed').href = "feed.html?" + id
+    document.getElementById('urlFeed').href = "feed_flex.html?" + id
 }
