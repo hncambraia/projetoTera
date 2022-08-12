@@ -62,7 +62,7 @@ function validaLogin(usuario, senha) {
     }
 
     if (usuarioLocalizado && senhaValidado) {
-        window.location.href = "feed.html?" + usuarioValidado;
+        window.location.href = "feed_flex.html?" + usuarioValidado;
         return ["", usuarioValidado];
     }
 
