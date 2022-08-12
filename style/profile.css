@@ -1,27 +1,4 @@
-#painelCeltral{
-    width: 30%px;
-background-color: white;
-border-radius: 10pt;
-padding: 34px 24px 10px 24px;
-transform: translatex(-50%);
-margin-left: 50%;
-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-margin-bottom: 20px;
-position: absolute;
-top: 150px;
 
-transform: translate(-50%);
-
-display: flex;
-flex-direction: column;
-align-items: center;
-
-height: 50%;
-
-}
-h6{
-    font-size: 14px;
-}
 
   body {
     margin: 0px;
@@ -42,16 +19,15 @@ h6{
 #botao{
     background-color: #4B3128;
     font-weight: bold;
-    font-family: Montserrat;
+  
     color: #F8F4EB;
     border: #F8F4EB;
     padding: 5px;
 
     position: relative;
 
-    top: 400px;
-    left: 50%;
-    transform: translate(-50%);
+
+
   
 }
 
@@ -60,16 +36,7 @@ h6{
     color: #4B3128;
     border: 1px solid #F8F4EB;
 }
-.painelLateralDireito{
-    background-color: #F8F4EB;
-float: right;
-position: relative;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 10px;
-    top: 150px;   
-    border-radius: 10px;
-}
+
 
 
 .amigo {
