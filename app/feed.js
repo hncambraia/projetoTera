@@ -72,11 +72,16 @@ function imprimeFeedBoot(id, pesquisa) {
         return el.idusuario == id || el.idusuario == undefined;
     })
     document.getElementById('postsFeed').innerHTML = ""
-    console.log(pesquisa)
+    console.log(feedFiltrado)
+    if (feedFiltrado == undefined)
+    {
+        feedFiltrado = feed
+    }
+    console.log(feedFiltrado)
     for (var index = 0; index < feed.length; index++) {
         var post = ""
-        console.log(feedFiltrado[index].titulo)
-        if (feed[index].texto.includes(pesquisa) || feed[index].titulo.includes(pesquisa) || pesquisa == undefined) {
+        
+        if (feedFiltrado[index].texto.includes(pesquisa) || feedFiltrado[index].titulo.includes(pesquisa) || pesquisa == undefined) {
             post = " <div class='card' >"
             //"<svg class='bd-placeholder-img card-img-top' width='100%' height='180'"+
             if (feedFiltrado[index].imagem != undefined) {
@@ -94,7 +99,7 @@ function imprimeFeedBoot(id, pesquisa) {
             
             "</div>"+
           "</div> <br>"
-            console.log(feedFiltrado[index].texto)
+            
 
             document.getElementById('postsFeed').innerHTML += post;
         }
@@ -103,7 +108,10 @@ function imprimeFeedBoot(id, pesquisa) {
 
 
 function pesquisaFeed() {
+ 
     var idUsuario = location.search.substring(1);
+    console.log(idUsuario)
+    console.log(document.getElementById("pesquisaFeed").value)
     imprimeFeedBoot(idUsuario, document.getElementById("pesquisaFeed").value)
 }
 

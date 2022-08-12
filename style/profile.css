@@ -25,17 +25,11 @@ h6{
 
   body {
     margin: 0px;
-    font-family: Montserrat;
+    
     background-color: gray;
     display: block;
 }
 
-img {
-    width: 150px;
-    height: auto;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  
-}
 
 #avatar {
     width: 150px;
