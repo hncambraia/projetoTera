@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -17,37 +17,17 @@
   </link>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-light">
-  <img src="img/logo2.png" alt="" width="150" height=auto class="rounded mx-auto d-block center">
-  <div class="container-fluid">
+<div id="cabecalho"></div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" id="urlProfile" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" id="urlFeed" href="#">Feed</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link active" aria-current="page" href="#">Logout</a>
 
-        </li>
+<div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+  <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-5 news"><span class="d-flex align-items-center">Cotação Café</span></div>
+  <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <p id="texto"></p>
+  </marquee>
+</div>
 
-      </ul>
-      <!--<form class="d-flex" role="search">-->
-      <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="pesquisaFeed">
-      <button onclick="pesquisaFeed()" class="btn btn-outline-search">Pesquisar</button>
-      <!--</form>-->
-    </div>
-  </div>
-</nav>
 
-<body onload=" getUser( location.search.substring(1)); imprimeFeedBoot(location.search.substring(1))"></body>
+<body onload="recuperaUsuarios();getUser( location.search.substring(1)); imprimeFeedBoot(location.search.substring(1)); imprimeCabecalho(location.search.substring(1))"></body>
 
 <br>
 <main class="container">

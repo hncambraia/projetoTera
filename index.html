@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style/login_styles.css">
 </head>
 
-<body id="bodyLogin">
+<body id="bodyLogin" onload="recuperaUsuarios()">
     <center>
 
         <div id="divLogin">
@@ -24,9 +24,11 @@
                 <label for="senha">Senha</label>
                 <input id="senha" type="password"><br>
             </div>
+            
             <button id="botao"
                 onclick="validaLogin(document.getElementById('login').value,document.getElementById('senha').value)">Login</button>
 
+            <button id="botaoCadastro"                onclick="novoUsuario()">Cadastro</button>
             <h6 id="dadosInvalidos"></h6>
 
 

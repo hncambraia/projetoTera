@@ -56,11 +56,30 @@
 
     position: absolute;
     top: 250px;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%);
 }
 
 #botao:hover{
+    background-color: #4B3128;
+    color: #F8F4EB;
+    border: 1px solid #F8F4EB;
+}
+#botaoCadastro{
+    background-color: #F8F4EB;
+    font-weight: bold;
+    font-family: Montserrat;
+    color: #4B3128;
+    border: #F8F4EB;
+    padding: 5px;
+
+    position: absolute;
+    top: 250px;
+    left: 70%;
+    transform: translate(-50%);
+}
+
+#botaoCadastro:hover{
     background-color: #4B3128;
     color: #F8F4EB;
     border: 1px solid #F8F4EB;
