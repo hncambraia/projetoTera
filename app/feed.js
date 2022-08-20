@@ -63,9 +63,39 @@ function imprimeFeed(id, pesquisa) {
             document.getElementById('postsFeed').innerHTML += post;
         }
     }
+    recuperaCotacoesMap()
 }
 
+function recuperaCotacoesMap() {
+    texto = ""
+    tipo = "Cotacao"
+    console.log('co')
+    const div = document.getElementById("texto");
+    fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
+        .then(response => {
+            response.json()
 
+                .then(data => {
+                    const lista_cotacao = data.value;
+
+                    lista_cotacao.map((dado) => {
+                        texto += `Data: ${formataData(dado.Data)} - R$ ${(dado.Valor.replace(".", ","))} `
+
+                    }
+
+                    )
+
+                    div.innerHTML += `<marquee>  ${texto} </marquee>`
+
+                })
+
+        })
+        .catch(e => {
+            console.log("ERRO: " + e)
+        })
+
+
+}
 function imprimeFeedBoot(id, pesquisa) {
 
     var feedFiltrado = feed.filter(function (el) {
@@ -104,6 +134,7 @@ function imprimeFeedBoot(id, pesquisa) {
             document.getElementById('postsFeed').innerHTML += post;
         }
     }
+    recuperaCotacoesMap()
 }
 
 
