@@ -3,7 +3,9 @@ var usuarios = ''
 
 
 function novoUsuario() {
+
     window.location.href = "new_user.html?=0"
+    
 }
 const options = {
     method: 'GET',
@@ -11,20 +13,38 @@ const options = {
 }
 
 function fillEditUser(){
-    id=sessionStorage.getItem('idUsuarios')
-    console.log('id:',id)
-        usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
-    
-    window.location.href = "new_user.html?" + id
-    
-    var usuarioFiltrado = usuarios.filter(function (el) {
-        return el.id == id;
-    })
-    console.log('1',usuarioFiltrado[0].Nome)
-    document.getElementById('name').value =usuarioFiltrado[0].Nome
+    id=location.search.substring(1);
 
+sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
+    
+window.location.href = "new_user.html?" + id
+console.log(id)
 }
 
+function preencheDados(){
+    usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
+    console.log(usuarios)
+    var usuarioFiltrado = usuarios.filter(function (el) {
+        return el.id == location.search.substring(1);
+    })
+
+    if (location.search.substring(1)>0){
+
+    document.getElementById('name').value = usuarioFiltrado[0].Nome
+    document.getElementById('login').value = usuarioFiltrado[0].Login
+    document.getElementById('email').value = usuarioFiltrado[0].Email
+    document.getElementById('senha').value = usuarioFiltrado[0].Senha
+    document.getElementById('confirmacaosenha').value = usuarioFiltrado[0].Senha
+    document.getElementById('bio').value = usuarioFiltrado[0].Bio
+
+    document.getElementById('btnCadastrar').hidden = true
+    document.getElementById('btnEditar').hidden = false
+    }
+    else {
+        document.getElementById('btnCadastrar').hidden = false
+    document.getElementById('btnEditar').hidden = true
+    }
+}
 var dataCotacao
 
 
@@ -57,7 +77,7 @@ function recuperaUsuarios() {
 
                 .then(data => {
                     usuarios = data.value;
-                    console.log('f', usuarios)
+                    
                     sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
                     
 
@@ -94,9 +114,9 @@ function validaLogin(usuario, senha) {
 
 
 
-    console.log('Exel', usuarios)
+    
     for (var index = 0; index < usuarios.length; index++) {
-        console.log('login', usuarios[index].Login)
+        
         if (usuarios[index].Login == usuario) {
             usuarioLocalizado = true;
             if (usuarios[index].Senha == senha) {
@@ -127,12 +147,12 @@ function validaLogin(usuario, senha) {
 function imprimeDadosUsuarios(id) {
     usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
     
-console.log('1',usuarios)
+
 imprimeCabecalho()
     var usuarioFiltrado = usuarios.filter(function (el) {
         return el.id == id;
     })
-    console.log(usuarioFiltrado)
+    
     document.getElementById('nome').textContent = "Nome: " + usuarioFiltrado[0].Nome
     document.getElementById('login').textContent = "Login: " + usuarioFiltrado[0].Login
     document.getElementById('email').textContent = "E-mail: " + usuarioFiltrado[0].Email
@@ -145,30 +165,24 @@ imprimeCabecalho()
 function imprimeListaAmigos(idUsuario, pesquisa) {
 
     var amigos = ""
+    usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
     var usuarioFiltrado = usuarios.filter(function (el) {
         return el.id == idUsuario;
     })
 
     document.getElementById('listaAmigos').innerHTML = ""
     listaAmigos = usuarioFiltrado[0].Amigos.split(',')
-    console.log('1',listaAmigos )
-    for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {
-        console.log(listaAmigos[indexAmigos])
 
-        usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
+    for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {                
         var amigoFiltrado = usuarios.filter(function (el) {
-            return el.id == usuarioFiltrado[0].Amigos[indexAmigos];
+            return el.id == parseInt(listaAmigos[indexAmigos]);
         })
 
         if (amigoFiltrado[0].Nome.includes(pesquisa) || amigoFiltrado[0].email.includes(pesquisa) || pesquisa == undefined) {
-            amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].foto + "'</img> <h5>" + amigoFiltrado[0].nome + " (" + amigoFiltrado[0].email + ")</h5> </div>"
-
+            amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].Foto + "'</img> <h5>" + amigoFiltrado[0].Nome + " (" + amigoFiltrado[0].Email + ")</h5> </div>"
             document.getElementById('listaAmigos').innerHTML += amigos
         }
     }
-
-
-
 }
 
 function pesquisaAmigos() {
@@ -205,9 +219,6 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha,bio) 
         Bio: bio
     };
 
-    console.log(name)
-    console.log(id)
-    console.log(usuario)
 
     const opt = {
         method: metodoHttp, //PUT, PATCH, DELETE, GET é opcional
@@ -216,21 +227,28 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha,bio) 
             "Content-Type": "application/json"
         }
     };
+    console.log(opt)
 
     let url = "https://prod-89.westus.logic.azure.com/workflows/dad5effed73e4a1f837a5351cb9a951e/triggers/manual/paths/invoke/tipo/Usuarios?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7O_ybyW9x4XPdiJyLalxf9ACRoSNFXeTgQHt-l00y1Y";
+    let mensagem = 'Usuário cadastrado com sucesso!'                
+    let urlDestino =  'index.html'
 
     if (id > 0) {
-        url += "/" + id;
+        url ='https://prod-142.westus.logic.azure.com/workflows/c510e0e07fe54134a8b74ab7e7fbaf44/triggers/manual/paths/invoke/tipo/Usuarios/id/'+id+'?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fRq6d4D6Du91hYRAD3U4v2y_dgc4y6CbFjJ219pIP6s'
+        mensagem = 'Usuário alterado com sucesso!'
+        urlDestino = "profile.html?" + id
     }
 
-    console.log(url);
-
+    console.log(id)    
+console.log(url)
+console.log(mensagem)
+console.log(urlDestino)
     
 
     fetch(url, opt)
         .then((resposta) => console.log(resposta.status))
-        .then(window.alert('Usuário cadastrado com sucesso!'))
-        .then(window.location.href = 'index.html')
+        .then(window.alert(mensagem))
+        
         .catch(() => window.alert({ Error }));
 
     

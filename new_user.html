@@ -18,7 +18,7 @@
 </head>
 <div id="cabecalho"></div>
 
-<body onload="getUser(location.search.substring(1))">
+<body onload="getUser(location.search.substring(1));preencheDados()">
     <br>
     <main class="container">
         
@@ -82,7 +82,8 @@
 
             <div class="mb-3 col-md-6">
 
-                <button class="btn btn-primary btn-lg btn-block"  onclick="fnCadastraAlteraUsuario('POST',0,document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Cadastrar</button>
+                <button id="btnCadastrar" class="btn btn-primary btn-lg btn-block"  onclick="fnCadastraAlteraUsuario('POST',0,document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Cadastrar</button>
+                <button id="btnEditar" class="btn btn-primary btn-lg btn-block"  onclick="fnCadastraAlteraUsuario('PUT',location.search.substring(1),document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Alterar</button>
             </div>
         
     </main>

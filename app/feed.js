@@ -1,3 +1,4 @@
+/*
 let feed = [
     {
         "id": 1,
@@ -40,36 +41,11 @@ let feed = [
     }
 
 ]
-
-function imprimeFeed(id, pesquisa) {
-
-    var feedFiltrado = feed.filter(function (el) {
-        return el.idusuario == id || el.idusuario == undefined;
-    })
-    document.getElementById('postsFeed').innerHTML = ""
-    console.log(pesquisa)
-    for (var index = 0; index < feed.length; index++) {
-        var post = ""
-        console.log(feedFiltrado[index].titulo)
-        if (feed[index].texto.includes(pesquisa) || feed[index].titulo.includes(pesquisa) || pesquisa == undefined) {
-            post = "<div class='posts'> <h1>" + feedFiltrado[index].titulo + "</h1>" +
-                "<h3>" + feedFiltrado[index].texto + "</h3>         <br>    <input id='comentario'> <br> <button id='botaoComentar'>Comentar</button><br></div>"
-            console.log(feedFiltrado[index].texto)
-            if (feedFiltrado[index].imagem != undefined) {
-                post = "<div class='posts'> <h1>" + feedFiltrado[index].titulo + "</h1>" +
-                    "<h3>" + feedFiltrado[index].texto + "</h3>" +
-                    "<img src='" + feedFiltrado[index].imagem + "'</img>   <br>  <input id='comentario'> <br> <button id='botaoComentar'>Comentar</button><br></div>"
-            }
-            document.getElementById('postsFeed').innerHTML += post;
-        }
-    }
-    recuperaCotacoesMap()
-}
+*/
 
 function recuperaCotacoesMap() {
-    texto = ""
     tipo = "Cotacao"
-    console.log('co')
+    texto=""
     const div = document.getElementById("texto");
     fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
         .then(response => {
@@ -85,7 +61,7 @@ function recuperaCotacoesMap() {
 
                     )
 
-                    div.innerHTML += `<marquee>  ${texto} </marquee>`
+                    div.innerHTML += `  ${texto} `
 
                 })
 
@@ -96,61 +72,96 @@ function recuperaCotacoesMap() {
 
 
 }
-function imprimeFeedBoot(id, pesquisa) {
 
-    var feedFiltrado = feed.filter(function (el) {
-        return el.idusuario == id || el.idusuario == undefined;
-    })
-    document.getElementById('postsFeed').innerHTML = ""
-    console.log(feedFiltrado)
-    if (feedFiltrado == undefined)
-    {
-        feedFiltrado = feed
+function trataListas(list) {
+    var lista = ""
+
+    for (indexIngredientes = 0; indexIngredientes < list.length; indexIngredientes++) {
+        item = "<li>" + list[indexIngredientes] + "</li>"
+        lista += item
+
     }
-    console.log(feedFiltrado)
-    for (var index = 0; index < feed.length; index++) {
-        var post = ""
+    return lista
+}
+function imprimeFeedReceitasApi() {
+    
+    post = ""
+    tipo = "Receitas"
+    const div = document.getElementById("postsFeed");
+    var id = location.search.substring(1);
+    fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
+        .then(response => {
+            response.json()
+
+                .then(data => {
+                    const feedFiltrado = data.value;
+                    console.log(feedFiltrado)
+                    var lista_cotacao = feedFiltrado.filter(function (el) {
+                        return el.idUsuario == id || el.idUsuario == undefined;
+                    })
+                    console.log(lista_cotacao)
+                    lista_cotacao.map((dado) => {
+                        Ingredientes = titleCase(dado.Ingredientes).split("\n")
+                        listaIngredientes = trataListas(Ingredientes)
+
+                        modoPerparo = titleCase(dado.ModoPreparo).split("\n")
+                        listaModos = trataListas(modoPerparo)
+                        post += `<div class='card' >
+                                    <title>Placeholder</title><rect width='100%' height='100%'>
+                                    <img src="${dado.Imagem}" class='card-img-top'>  
+                                    
+                                    <div class='card-body'>
+                                        <h5 class='card-title'> ${dado.titulo} </h5>                                    
+                                        <p class='card-text'> <b>Ingredientes</b> <ul> ${listaIngredientes} </ul> </p>
+                                        <p class='card-text'> <b>Modo de Preparo</b> <ol> ${listaModos} </ol> </p>
+                                        
+                                        <div class="row">
+                                            <div class="mb-3 col-md-10">
+                                                <input class="form-control me-3" type="search" placeholder="Comentar" aria-label="Search">
+                                            </div>
+                                            <div class="mb-3 col-md-2">
+                                                <button class='btn btn-primary'>Comentar</button>
+                                            </div>
+                                         </div>                                        
+                                      </div>
+                                    </div> <br>                                    `
+                    }
+
+
+
+
+
+                    )
+
+                    div.innerHTML += post;
+
+
+                })
+
+        })
+        .catch(e => {
+            console.log("ERRO: " + e)
+        })
+
         
-        if (feedFiltrado[index].texto.includes(pesquisa) || feedFiltrado[index].titulo.includes(pesquisa) || pesquisa == undefined) {
-            post = " <div class='card' >"
-            //"<svg class='bd-placeholder-img card-img-top' width='100%' height='180'"+
-            if (feedFiltrado[index].imagem != undefined) {
-           post+= "<img src='" + feedFiltrado[index].imagem + "' class='card-img-top'</img>  "
-        }
-        post+=
-
-            "<title>Placeholder</title><rect width='100%' height='100%'"+
-  
-          
-            "<div class='card-body'>"+
-            "  <h5 class='card-title'>"+feedFiltrado[index].titulo +"</h5>"+
-            "  <p class='card-text'>"+feedFiltrado[index].texto+"</p>"+
-            "<input id='comentario'> <br> <button class='btn btn-primary'>Comentar</button>"+
-            
-            "</div>"+
-          "</div> <br>"
-            
-
-            document.getElementById('postsFeed').innerHTML += post;
-        }
-    }
-    recuperaCotacoesMap()
 }
 
 
+
 function pesquisaFeed() {
- 
+
     var idUsuario = location.search.substring(1);
     console.log(idUsuario)
     console.log(document.getElementById("pesquisaFeed").value)
-    imprimeFeedBoot(idUsuario, document.getElementById("pesquisaFeed").value)
+    imprimeFeedReceitasApi()
+    //imprimeFeedBoot(idUsuario, document.getElementById("pesquisaFeed").value)
 }
 
 
 function postarFeed() {
     var novoFeed = {
         "id": feed.length + 1,
-        "titulo":  document.getElementById("postarTitulo").value,
+        "titulo": document.getElementById("postarTitulo").value,
         "texto": document.getElementById("postarTexto").value,
         "idusuario": location.search.substring(1)
     }
