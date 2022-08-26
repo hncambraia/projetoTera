@@ -3,9 +3,7 @@ var usuarios = ''
 
 
 function novoUsuario() {
-
-    window.location.href = "new_user.html?=0"
-    
+    window.location.href = "new_user.html?=0"    
 }
 const options = {
     method: 'GET',
@@ -68,27 +66,18 @@ function titleCase(str) {
 
 
 function recuperaUsuarios() {
-
     tipo = "Usuarios"
-
     fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
         .then(response => {
             response.json()
-
                 .then(data => {
-                    usuarios = data.value;
-                    
-                    sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
-                    
-
+                    usuarios = data.value;                    
+                    sessionStorage.setItem("usuarios", JSON.stringify(usuarios));                    
                 })
-
-
         })
         .catch(e => {
             console.log("ERRO: " + e)
         })
-
 }
 
 
@@ -258,9 +247,10 @@ console.log(urlDestino)
 
 function imprimeCabecalho(){
 document.getElementById('cabecalho').innerHTML =
-    '<nav class="navbar navbar-expand-lg bg-light">' +
-    '<img src="img/logo2.png" alt="" width="150" height=auto class="rounded mx-auto d-block center" onclick="gotoIndex()">' +
+    
+'<nav class="navbar navbar-expand-lg bg-light">' +    
     '<div class="container-fluid">' +
+    '<img src="img/logo2.png" alt="" width="150" height=auto class="rounded mx-auto d-block center" onclick="gotoIndex()">' +
     '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"' +
     'aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">' +
     '<span class="navbar-toggler-icon"></span>' +
@@ -278,7 +268,7 @@ document.getElementById('cabecalho').innerHTML =
     '</li>' +
     '</ul>' +
     '<!--<form class="d-flex" role="search">-->' +
-    '<input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="pesquisaFeed">' +
+    '<input  style="min-width:300px;  class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" id="pesquisaFeed">' +
     '<button onclick="pesquisaFeed()" class="btn btn-outline-search">Pesquisar</button>' +
     '<!--</form>-->' +
     '</div>' +
