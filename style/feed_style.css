@@ -23,17 +23,13 @@ a:hover{
     padding: 0 10px;
     display: flex;
     flex-direction: row;
- 
 }
-
 
 .painelFeedCentral {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 650px;
-    
-
 }
 
 .painelLateralDireito{
@@ -57,13 +53,11 @@ a:hover{
     border-radius: 10px;
 }
 
-.barra-superior {
+.barraSuperior {
     background-color: #F8F4EB;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -73,24 +67,25 @@ a {
     text-decoration: none;
 }
 
-
-
 #pesquisaFeed{
     display: flex;
     border-radius: 10px;
 }
+
 #comentario{
     display: flex;
     border-radius: 10px;
 }
+
 #postarTitulo{
     display: flex;
-width: 50%;
+    width: 50%;
     border-radius: 10px;
 }
+
 #postarTexto{
     display: flex;
-width: 50%;
+    width: 50%;
     border-radius: 10px;
 }
 
@@ -104,7 +99,6 @@ width: 50%;
     position: relative;
     left: 50%;
     transform: translate(-50%);
-  
 }
 
 #botao:hover{
@@ -112,8 +106,6 @@ width: 50%;
     color: #4B3128;
     border: 1px solid #F8F4EB;
 }
-
-
 
 #botaoComentar{
     background-color: #4B3128;
