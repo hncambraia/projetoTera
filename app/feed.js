@@ -1,48 +1,5 @@
-/*
-let feed = [
-    {
-        "id": 1,
-        "titulo": "titulo 1",
-        "texto": "texto 1 <br>texto 1213",
-        "imagem": "img/cafe.jpg",
-        "idusuario": "1"
-    },
-    {
-        "id": 2,
-        "titulo": "titulo 2",
-        "texto": "texto 2",
-        "imagem": "img/cafe2.jpg",
-        "idusuario": "1"
-    },
-    {
-        "id": 3,
-        "titulo": "titulo 3",
-        "texto": "texto 3",
-        "imagem": "img/cafe2.jpg",
-        "idusuario": "2"
-    },
-    {
-        "id": 4,
-        "titulo": "titulo 4",
-        "texto": "texto 4",
-        "imagem": "img/cafe2.jpg",
-        "idusuario": "3"
-    },
-    {
-        "id": 5,
-        "titulo": "titulo 5",
-        "texto": "texto 5",
-        "idusuario": "1"
-    },
-    {
-        "id": 6,
-        "titulo": "titulo 6",
-        "texto": "texto 6"
-    }
 
-]
-*/
-
+//recupera cotações pela api
 function recuperaCotacoesMap() {
     tipo = "Cotacao"
     texto = ""
@@ -56,23 +13,17 @@ function recuperaCotacoesMap() {
 
                     lista_cotacao.map((dado) => {
                         texto += `Data: ${formataData(dado.Data)} - R$ ${(dado.Valor.replace(".", ","))} `
-
                     }
-
                     )
-
                     div.innerHTML += `  ${texto} `
-
                 })
-
         })
         .catch(e => {
             console.log("ERRO: " + e)
         })
-
-
 }
 
+//função para imprimir as receitas em modo lista
 function trataListas(list) {
     var lista = ""
 
@@ -83,8 +34,8 @@ function trataListas(list) {
     }
     return lista
 }
+//monta o feed recuperando os dados pela api
 function imprimeFeedReceitasApi(id, valorPesquisa) {
-
     post = ""
     tipo = "Receitas"
     const div = document.getElementById("postsFeed");
@@ -95,13 +46,14 @@ function imprimeFeedReceitasApi(id, valorPesquisa) {
 
                 .then(data => {
                     const feedFiltrado = data.value;
-                    console.log(feedFiltrado)
+                    console.log(feedFiltrado)                 
                     var lista_cotacao = feedFiltrado.filter(function (el) {
-                        return ((el.idUsuario == id || el.idUsuario == undefined) || (el.Ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa) || el.ModoPreparo.includes(valorPesquisa)));
-
+                        return ((el.idUsuario == id || el.idUsuario == undefined) && (el.Ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa) || valorPesquisa== undefined || el.ModoPreparo.includes(valorPesquisa)));
                     })
-                    console.log(lista_cotacao)
+                    console.log("F",lista_cotacao)
+                   
                     lista_cotacao.map((dado) => {
+                        console.log("dado",dado)
                         Ingredientes = titleCase(dado.Ingredientes).split("\n")
                         listaIngredientes = trataListas(Ingredientes)
 
@@ -127,38 +79,24 @@ function imprimeFeedReceitasApi(id, valorPesquisa) {
                                       </div>
                                     </div> <br>                                    `
                     }
-
-
-
-
-
                     )
 
                     div.innerHTML += post;
-
-
                 })
-
         })
         .catch(e => {
             console.log("ERRO: " + e)
         })
-
-
 }
 
-
-
+//função para filtrar as receitas
 function pesquisaFeed() {
-
     var idUsuario = location.search.substring(1);
     console.log(idUsuario)
-    console.log(document.getElementById("pesquisaFeed").value)
+    console.log("1",document.getElementById("pesquisaFeed").value)
     imprimeFeedReceitasApi(idUsuario, document.getElementById("pesquisaFeed").value)
-    //imprimeFeedBoot(idUsuario, document.getElementById("pesquisaFeed").value)
 }
-
-
+/*
 function postarFeed() {
     var novoFeed = {
         "id": feed.length + 1,
@@ -170,4 +108,4 @@ function postarFeed() {
     feed.push(novoFeed)
     console.log(feed)
     pesquisaFeed()
-}
+}*/

@@ -1,15 +1,18 @@
 var usuariosExcel = ''
 var usuarios = ''
 
-
+//redireciona para a tela de novo usuário
 function novoUsuario() {
     window.location.href = "new_user.html?=0"
 }
+
+//variaveis para a api GET
 const options = {
     method: 'GET',
     mode: 'cors'
 }
 
+//recupera dados do usuário logado
 function fillEditUser() {
     id = location.search.substring(1);
 
@@ -18,7 +21,7 @@ function fillEditUser() {
     window.location.href = "new_user.html?" + id
     console.log(id)
 }
-
+//preenche dados do usuario logado na tela de edição do perfil perfil
 function preencheDados() {
     usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
     console.log(usuarios)
@@ -43,12 +46,9 @@ function preencheDados() {
         document.getElementById('btnEditar').hidden = true
     }
 }
+//formatação de data para a cotação
 var dataCotacao
-
-
 function formataData(dataAFortmatar) {
-
-
     var dd = String(dataAFortmatar).substring(10, 8);
     var mm = String(dataAFortmatar).substring(7, 5); //January is 0!
     var yyyy = String(dataAFortmatar).substring(0, 4); //January is 0!
@@ -56,6 +56,7 @@ function formataData(dataAFortmatar) {
     return novaData
 }
 
+//função para formatar o texto como title case
 function titleCase(str) {
     str = str.toLowerCase().split(' ');
     for (var i = 0; i < str.length; i++) {
@@ -64,7 +65,7 @@ function titleCase(str) {
     return str.join(' ');
 }
 
-
+//recupera usuário pela api
 function recuperaUsuarios() {
     tipo = "Usuarios"
     fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
@@ -81,7 +82,7 @@ function recuperaUsuarios() {
 }
 
 
-
+//verifica o usuário logado, se não tiver usuário logado redireciona para a tela de login, para usuario logado vai para o feed
 function gotoIndex() {
     id = Number(location.search.substring(1))
 
@@ -91,18 +92,15 @@ function gotoIndex() {
     }
     else {
         window.location.href = "index.html"
-
-
     }
 }
+
+//valida usuário logado
 function validaLogin(usuario, senha) {
     var usuarioLocalizado = false;
     var senhaValidado = false;
     var mensagemFinal = "";
     var usuarioValidado;
-
-
-
 
     for (var index = 0; index < usuarios.length; index++) {
 
@@ -122,9 +120,6 @@ function validaLogin(usuario, senha) {
         return ["", usuarioValidado];
     }
 
-    //    else if (senhaValidado == false && usuarioLocalizado){
-    //             mensagemFinal = "senha invalida"    
-    //    }
     else {
         mensagemFinal = "Usuário ou senha inválidos!"
     }
@@ -132,7 +127,7 @@ function validaLogin(usuario, senha) {
     window.alert(mensagemFinal);
 
 }
-
+//imprime dados do usuario logado na tela de perfil
 function imprimeDadosUsuarios(id) {
     usuarios = JSON.parse(sessionStorage.getItem("usuarios"));
 
@@ -151,6 +146,8 @@ function imprimeDadosUsuarios(id) {
 
     getUser(id)
 }
+
+//imprime lista de amigos do usuário logado
 function imprimeListaAmigos(idUsuario, pesquisa) {
 
     var amigos = ""
@@ -174,31 +171,31 @@ function imprimeListaAmigos(idUsuario, pesquisa) {
     }
 }
 
+//pesquisa amigos do usuario logado
 function pesquisaAmigos() {
     var idUsuario = location.search.substring(1);
     imprimeListaAmigos(idUsuario, document.getElementById("pesquisa").value)
 }
 
+
+//redirecionamento / habilitação de menus para usuarios não logados
 function getUser(id) {
     if (id == 0) {
         document.getElementById('urlProfile').hidden = true
         document.getElementById('urlFeed').hidden = true
         document.getElementById('urlLogout').hidden = true
-
-
     }
     else {
         imprimeCabecalho()
         document.getElementById('urlProfile').href = "profile.html?" + id
         document.getElementById('urlFeed').href = "feed_flex.html?" + id
         document.getElementById('urlLogout').href = "index.html"
-
-
     }
 
 
 }
 
+//função para chamada da api para cadastrar/alterar usuarios
 function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio) {
     const usuario = {
         Nome: name,
@@ -244,7 +241,7 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio)
 
 }
 
-
+//montagem do cabeçalho padrão para todas as telas
 function imprimeCabecalho() {
    
     document.getElementById('cabecalho').innerHTML =
