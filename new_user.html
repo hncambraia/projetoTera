@@ -21,71 +21,73 @@
 <body onload="getUser(location.search.substring(1));preencheDados()">
     <br>
     <main class="container">
-        
-            <div class="row">
-                <div class="mb-3">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" class="form-control" id="name" placeholder=""  required="">
-                    <div class="invalid-feedback">
-                        Nome é obrigatório
+
+        <div class="row">
+            <div class="mb-3">
+                <label for="name">Nome Completo</label>
+                <input type="text" class="form-control" id="name" placeholder="" required="">
+                <div class="invalid-feedback">
+                    Nome é obrigatório
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="username">Login</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="login" placeholder="Login" required="">
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Login é obrigatório
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="mb-3 col-md-6">
-                    <label for="username">Login</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                        </div>
-                        <input type="text" class="form-control" id="login" placeholder="Login" required="">
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Login é obrigatório
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="email">Email <span class="text-muted"></span></label>
-                    <input type="email" class="form-control" id="email" placeholder="email@email.com">
-                    <div class="invalid-feedback">
-                        Email é obrigatório
-                    </div>
+            <div class="mb-3 col-md-6">
+                <label for="email">Email <span class="text-muted"></span></label>
+                <input type="email" class="form-control" id="email" placeholder="email@email.com">
+                <div class="invalid-feedback">
+                    Email é obrigatório
                 </div>
             </div>
+        </div>
 
 
-            <div class="row">
-                <div class="mb-3 col-md-6">
-                    <label for="senha">Senha <span class="text-muted"></span></label>
-                    <input type="password" class="form-control" id="senha">
-                    <div class="invalid-feedback">
-                        Senha obrigatória
-                    </div>
-                </div>
-
-                <div class="mb-3 col-md-6">
-                    <label for="confirmacaosenha">Confirmação Senha <span class="text-muted"></span></label>
-                    <input type="password" class="form-control" id="confirmacaosenha">
-                    <div class="invalid-feedback">
-                        Senha obrigatória
-                    </div>
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="senha">Senha <span class="text-muted"></span></label>
+                <input type="password" class="form-control" id="senha">
+                <div class="invalid-feedback">
+                    Senha obrigatória
                 </div>
             </div>
-
-            <div class="row">
-                <div class="mb-3 ">
-                    <label for="confirmacaosenha">Bio <span class="text-muted"></span></label>
-                    <input type="text" class="form-control" id="bio" height="300">
-                </div>
-            </div>
-
 
             <div class="mb-3 col-md-6">
-
-                <button id="btnCadastrar" class="btn btn-primary btn-lg btn-block"  onclick="fnCadastraAlteraUsuario('POST',0,document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Cadastrar</button>
-                <button id="btnEditar" class="btn btn-primary btn-lg btn-block"  onclick="fnCadastraAlteraUsuario('PUT',location.search.substring(1),document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Alterar</button>
+                <label for="confirmacaosenha">Confirmação Senha <span class="text-muted"></span></label>
+                <input type="password" class="form-control" id="confirmacaosenha">
+                <div class="invalid-feedback">
+                    Senha obrigatória
+                </div>
             </div>
-        
+        </div>
+
+        <div class="row">
+            <div class="mb-3 ">
+                <label for="confirmacaosenha">Bio <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="bio" height="300">
+            </div>
+        </div>
+
+
+        <div class="mb-3 col-md-6">
+
+            <button id="btnCadastrar" class="btn btn-primary btn-lg btn-block"
+                onclick="fnCadastraAlteraUsuario('POST',0,document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Cadastrar</button>
+            <button id="btnEditar" class="btn btn-primary btn-lg btn-block"
+                onclick="fnCadastraAlteraUsuario('PUT',location.search.substring(1),document.getElementById('name').value,document.getElementById('login').value,document.getElementById('email').value,document.getElementById('senha').value,document.getElementById('bio').value)">Alterar</button>
+        </div>
+
     </main>
 
     <script src="app/usuarios.js"></script>
