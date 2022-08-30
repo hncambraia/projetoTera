@@ -3,7 +3,7 @@ var usuarios = ''
 
 //redireciona para a tela de novo usuário
 function novoUsuario() {
-    window.location.href = "new_user.html?=0"
+    window.location.href = "new_user.html?0"
 }
 
 //variaveis para a api GET
@@ -180,16 +180,19 @@ function pesquisaAmigos() {
 
 //redirecionamento / habilitação de menus para usuarios não logados
 function getUser(id) {
-    if (id == 0) {
+    imprimeCabecalho()
+    if (id == 0) {   
         document.getElementById('urlProfile').hidden = true
         document.getElementById('urlFeed').hidden = true
         document.getElementById('urlLogout').hidden = true
     }
     else {
-        imprimeCabecalho()
         document.getElementById('urlProfile').href = "profile.html?" + id
         document.getElementById('urlFeed').href = "feed_flex.html?" + id
         document.getElementById('urlLogout').href = "index.html"
+        document.getElementById('urlProfile').hidden = false
+        document.getElementById('urlFeed').hidden = false
+        document.getElementById('urlLogout').hidden = false
     }
 
 
