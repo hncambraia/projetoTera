@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-#dadosInvalidos {
-    color: red;
-    font-size: large;    
-}
-
-#logoLogin{
-    position:relative;
-    left: 50%;
-    transform: translate(-50%);
-}
 
 #divLogin {
     font-family:Montserrat;

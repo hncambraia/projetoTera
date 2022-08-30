@@ -11,21 +11,6 @@
   margin-right: 60px;
 }
 
-#botao{
-    background-color: #4B3128;
-    font-weight: bold;  
-    color: #F8F4EB;
-    border: #F8F4EB;
-    padding: 5px;
-    position: relative;
-}
-
-#botao:hover{
-    background-color: #F8F4EB;
-    color: #4B3128;
-    border: 1px solid #F8F4EB;
-}
-
 .amigo {
     background-color: wheat;
     display: flex;
@@ -42,19 +27,4 @@
 .imgAmigo{
     width: 30px;
     height: 30px;
-}
-
-#pesquisa{
-    display: flex;
-    border-radius: 10px;
-}
-
-#botaoPesquisar{
-    background-color: #4B3128;
-    font-weight: bold;
-    font-family: Montserrat;
-    color: #F8F4EB;
-    border: #F8F4EB;
-    padding: 5px;
-    position: relative; 
 }
