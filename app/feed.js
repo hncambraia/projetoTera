@@ -45,7 +45,7 @@ let feed = [
 
 function recuperaCotacoesMap() {
     tipo = "Cotacao"
-    texto=""
+    texto = ""
     const div = document.getElementById("texto");
     fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
         .then(response => {
@@ -83,12 +83,12 @@ function trataListas(list) {
     }
     return lista
 }
-function imprimeFeedReceitasApi(id,valorPesquisa) {
-    
+function imprimeFeedReceitasApi(id, valorPesquisa) {
+
     post = ""
     tipo = "Receitas"
     const div = document.getElementById("postsFeed");
-console.log(valorPesquisa)    
+    console.log(valorPesquisa)
     fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
         .then(response => {
             response.json()
@@ -97,7 +97,7 @@ console.log(valorPesquisa)
                     const feedFiltrado = data.value;
                     console.log(feedFiltrado)
                     var lista_cotacao = feedFiltrado.filter(function (el) {
-                        return ((el.idUsuario == id || el.idUsuario == undefined) ||  (el.Ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa)|| el.ModoPreparo.includes(valorPesquisa)));
+                        return ((el.idUsuario == id || el.idUsuario == undefined) || (el.Ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa) || el.ModoPreparo.includes(valorPesquisa)));
 
                     })
                     console.log(lista_cotacao)
@@ -144,7 +144,7 @@ console.log(valorPesquisa)
             console.log("ERRO: " + e)
         })
 
-        
+
 }
 
 
@@ -154,7 +154,7 @@ function pesquisaFeed() {
     var idUsuario = location.search.substring(1);
     console.log(idUsuario)
     console.log(document.getElementById("pesquisaFeed").value)
-    imprimeFeedReceitasApi(idUsuario,document.getElementById("pesquisaFeed").value)
+    imprimeFeedReceitasApi(idUsuario, document.getElementById("pesquisaFeed").value)
     //imprimeFeedBoot(idUsuario, document.getElementById("pesquisaFeed").value)
 }
 
