@@ -158,7 +158,8 @@ function imprimeListaAmigos(idUsuario, pesquisa) {
 
     document.getElementById('listaAmigos').innerHTML = ""
     listaAmigos = usuarioFiltrado[0].Amigos.split(',')
-
+if (listaAmigos !='')
+{
     for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {
         var amigoFiltrado = usuarios.filter(function (el) {
             return el.id == parseInt(listaAmigos[indexAmigos]);
@@ -168,7 +169,7 @@ function imprimeListaAmigos(idUsuario, pesquisa) {
             amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].Foto + "'</img> <h5>" + amigoFiltrado[0].Nome + " (" + amigoFiltrado[0].Email + ")</h5> </div>"
             document.getElementById('listaAmigos').innerHTML += amigos
         }
-    }
+       }   }
 }
 
 //pesquisa amigos do usuario logado
@@ -235,10 +236,15 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio)
 
 
     fetch(url, opt)
-        .then((resposta) => console.log(resposta.status))
-        .then(window.alert(mensagem))
+        .then((resposta) => {
+                        if (resposta.status==200){
 
-        .catch(() => window.alert({ Error }));
+
+                        window.alert(mensagem)
+                        document.location  = urlDestino
+                        }}
+        )
+        .catch(() => window.alert("{ Error }"));
 
 
 
