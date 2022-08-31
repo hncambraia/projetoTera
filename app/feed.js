@@ -12,7 +12,7 @@ function recuperaCotacoesMap() {
                     const lista_cotacao = data.value;
 
                     lista_cotacao.map((dado) => {
-                        texto += `Data: ${formataData(dado.Data)} - R$ ${(dado.Valor.replace(".", ","))} `
+                        texto += `Data: ${formataData(dado.data)} - R$ ${(dado.valor.replace(".", ","))} `
                     }
                     )
                     div.innerHTML += `  ${texto} `
@@ -48,20 +48,20 @@ function imprimeFeedReceitasApi(id, valorPesquisa) {
                     const feedFiltrado = data.value;
                     console.log(feedFiltrado)                 
                     var lista_cotacao = feedFiltrado.filter(function (el) {
-                        return ((el.idUsuario == id || el.idUsuario == undefined) && (el.Ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa) || valorPesquisa== undefined || el.ModoPreparo.includes(valorPesquisa)));
+                        return ((el.idusuario == id || el.idusuario == undefined) && (el.ingredientes.includes(valorPesquisa) || el.titulo.includes(valorPesquisa) || valorPesquisa== undefined || el.modopreparo.includes(valorPesquisa)));
                     })
                     console.log("F",lista_cotacao)
                    
                     lista_cotacao.map((dado) => {
                         console.log("dado",dado)
-                        Ingredientes = titleCase(dado.Ingredientes).split("\n")
+                        Ingredientes = titleCase(dado.ingredientes).split("\n")
                         listaIngredientes = trataListas(Ingredientes)
 
-                        modoPerparo = titleCase(dado.ModoPreparo).split("\n")
+                        modoPerparo = titleCase(dado.modopreparo).split("\n")
                         listaModos = trataListas(modoPerparo)
                         post += `<div class='card' >
                                     <title>Placeholder</title><rect width='100%' height='100%'>
-                                    <img src="${dado.Imagem}" class='card-img-top'>  
+                                    <img src="${dado.imagem}" class='card-img-top'>  
                                     
                                     <div class='card-body'>
                                         <h5 class='card-title'> ${dado.titulo} </h5>                                    

@@ -31,12 +31,12 @@ function preencheDados() {
 
     if (location.search.substring(1) > 0) {
 
-        document.getElementById('name').value = usuarioFiltrado[0].Nome
-        document.getElementById('login').value = usuarioFiltrado[0].Login
-        document.getElementById('email').value = usuarioFiltrado[0].Email
-        document.getElementById('senha').value = usuarioFiltrado[0].Senha
-        document.getElementById('confirmacaosenha').value = usuarioFiltrado[0].Senha
-        document.getElementById('bio').value = usuarioFiltrado[0].Bio
+        document.getElementById('name').value = usuarioFiltrado[0].nome
+        document.getElementById('login').value = usuarioFiltrado[0].login
+        document.getElementById('email').value = usuarioFiltrado[0].email
+        document.getElementById('senha').value = usuarioFiltrado[0].senha
+        document.getElementById('confirmacaosenha').value = usuarioFiltrado[0].senha
+        document.getElementById('bio').value = usuarioFiltrado[0].bio
 
         document.getElementById('btnCadastrar').hidden = true
         document.getElementById('btnEditar').hidden = false
@@ -104,9 +104,9 @@ function validaLogin(usuario, senha) {
 
     for (var index = 0; index < usuarios.length; index++) {
 
-        if (usuarios[index].Login == usuario) {
+        if (usuarios[index].login == usuario) {
             usuarioLocalizado = true;
-            if (usuarios[index].Senha == senha) {
+            if (usuarios[index].senha == senha) {
 
                 senhaValidado = true;
                 usuarioValidado = usuarios[index].id;
@@ -137,11 +137,11 @@ function imprimeDadosUsuarios(id) {
         return el.id == id;
     })
 
-    document.getElementById('nome').textContent = "Nome: " + usuarioFiltrado[0].Nome
-    document.getElementById('login').textContent = "Login: " + usuarioFiltrado[0].Login
-    document.getElementById('email').textContent = "E-mail: " + usuarioFiltrado[0].Email
-    document.getElementById('bio').textContent = "Bio: " + usuarioFiltrado[0].Bio
-    document.getElementById('avatar').src = usuarioFiltrado[0].Foto
+    document.getElementById('nome').textContent = "Nome: " + usuarioFiltrado[0].nome
+    document.getElementById('login').textContent = "Login: " + usuarioFiltrado[0].login
+    document.getElementById('email').textContent = "E-mail: " + usuarioFiltrado[0].email
+    document.getElementById('bio').textContent = "Bio: " + usuarioFiltrado[0].bio
+    document.getElementById('avatar').src = usuarioFiltrado[0].foto
     imprimeListaAmigos(id, "")
 
     getUser(id)
@@ -157,7 +157,7 @@ function imprimeListaAmigos(idUsuario, pesquisa) {
     })
 
     document.getElementById('listaAmigos').innerHTML = ""
-    listaAmigos = usuarioFiltrado[0].Amigos.split(',')
+    listaAmigos = usuarioFiltrado[0].amigos.split(',')
 if (listaAmigos !='')
 {
     for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {
@@ -165,8 +165,8 @@ if (listaAmigos !='')
             return el.id == parseInt(listaAmigos[indexAmigos]);
         })
 
-        if (amigoFiltrado[0].Nome.includes(pesquisa) || amigoFiltrado[0].email.includes(pesquisa) || pesquisa == undefined) {
-            amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].Foto + "'</img> <h5>" + amigoFiltrado[0].Nome + " (" + amigoFiltrado[0].Email + ")</h5> </div>"
+        if (amigoFiltrado[0].nome.includes(pesquisa) || amigoFiltrado[0].email.includes(pesquisa) || pesquisa == undefined) {
+            amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].foto + "'</img> <h5>" + amigoFiltrado[0].nome + " (" + amigoFiltrado[0].email + ")</h5> </div>"
             document.getElementById('listaAmigos').innerHTML += amigos
         }
        }   }
@@ -202,11 +202,11 @@ function getUser(id) {
 //função para chamada da api para cadastrar/alterar usuarios
 function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio) {
     const usuario = {
-        Nome: name,
-        Login: login,
-        Email: email,
-        Senha: senha,
-        Bio: bio
+        nome: name,
+        login: login,
+        email: email,
+        senha: senha,
+        bio: bio
     };
 
 
