@@ -1,3 +1,4 @@
+const PORT = 8090;
 var usuariosExcel = ''
 var usuarios = ''
 
@@ -68,17 +69,72 @@ function titleCase(str) {
 //recupera usuário pela api
 function recuperaUsuarios() {
     tipo = "Usuarios"
-    fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
+
+
+    fetch(`http://localhost:${PORT}/usuarios/`, options)
+        //fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
         .then(response => {
             response.json()
                 .then(data => {
-                    usuarios = data.value;
+                    usuarios = data;
                     sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
+                    console.log(usuarios)
                 })
         })
         .catch(e => {
             console.log("ERRO: " + e)
         })
+}
+
+function recuperaUsuario() {
+    tipo = "Usuarios"
+
+    const usuario = document.getElementById('login').value
+    console.log("usuario", usuario)
+    const url = `http://localhost:${PORT}/usuarios/${usuario}`
+    console.log(url)
+    fetch(url, options)
+        //fetch('https://prod-110.westus.logic.azure.com/workflows/e50f80756b9b43baa71d055fbee3d9c6/triggers/manual/paths/invoke/tipo/' + tipo + '?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MUPtVkRaZGh1maM7uzFu2cmmaebhC1aKvLcfMfhirw0', options)
+        .then(response => {
+            response.json()
+                .then(data => {
+                    usuarios = data;
+                    sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
+                    return data
+                })
+        })
+        .catch(e => {
+            console.log("ERRO: " + e)
+        })
+
+
+}
+
+function validaUsuario(usuarioLogin, senhaLogin) {
+    const options = {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ usuario: usuarioLogin, senha: senhaLogin })
+    }
+
+    var content 
+    console.log("usuarioLogin", usuarioLogin)
+    const url = `http://localhost:8090/usuarios/validausuario`
+   
+
+        (async () => {
+            const validacao = await fetch(url, options)
+             content = await validacao.json();
+
+   
+        })
+
+return content
+
 }
 
 
@@ -102,14 +158,17 @@ function validaLogin(usuario, senha) {
     var mensagemFinal = "";
     var usuarioValidado;
 
-    for (var index = 0; index < usuarios.length; index++) {
+    const usuarioRecuperado = validaUsuario(usuario,senha)
+    console.log(usuarioRecuperado)
 
-        if (usuarios[index].login == usuario) {
+    for (var index = 0; index < usuarioRecuperado.length; index++) {
+
+        if (usuarioRecuperado[index].login == usuario) {
             usuarioLocalizado = true;
             if (usuarios[index].senha == senha) {
 
                 senhaValidado = true;
-                usuarioValidado = usuarios[index].id;
+                usuarioValidado = usuarioRecuperado[index]._id;
                 break;
             }
         }
@@ -158,18 +217,18 @@ function imprimeListaAmigos(idUsuario, pesquisa) {
 
     document.getElementById('listaAmigos').innerHTML = ""
     listaAmigos = usuarioFiltrado[0].amigos.split(',')
-if (listaAmigos !='')
-{
-    for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {
-        var amigoFiltrado = usuarios.filter(function (el) {
-            return el.id == parseInt(listaAmigos[indexAmigos]);
-        })
+    if (listaAmigos != '') {
+        for (var indexAmigos = 0; indexAmigos < listaAmigos.length; indexAmigos++) {
+            var amigoFiltrado = usuarios.filter(function (el) {
+                return el.id == parseInt(listaAmigos[indexAmigos]);
+            })
 
-        if (amigoFiltrado[0].nome.includes(pesquisa) || amigoFiltrado[0].email.includes(pesquisa) || pesquisa == undefined) {
-            amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].foto + "'</img> <h5>" + amigoFiltrado[0].nome + " (" + amigoFiltrado[0].email + ")</h5> </div>"
-            document.getElementById('listaAmigos').innerHTML += amigos
+            if (amigoFiltrado[0].nome.includes(pesquisa) || amigoFiltrado[0].email.includes(pesquisa) || pesquisa == undefined) {
+                amigos = "<div class='amigo'><img class='imgAmigo' src='" + amigoFiltrado[0].foto + "'</img> <h5>" + amigoFiltrado[0].nome + " (" + amigoFiltrado[0].email + ")</h5> </div>"
+                document.getElementById('listaAmigos').innerHTML += amigos
+            }
         }
-       }   }
+    }
 }
 
 //pesquisa amigos do usuario logado
@@ -182,7 +241,7 @@ function pesquisaAmigos() {
 //redirecionamento / habilitação de menus para usuarios não logados
 function getUser(id) {
     imprimeCabecalho()
-    if (id == 0) {   
+    if (id == 0) {
         document.getElementById('urlProfile').hidden = true
         document.getElementById('urlFeed').hidden = true
         document.getElementById('urlLogout').hidden = true
@@ -237,12 +296,13 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio)
 
     fetch(url, opt)
         .then((resposta) => {
-                        if (resposta.status==200){
+            if (resposta.status == 200) {
 
 
-                        window.alert(mensagem)
-                        document.location  = urlDestino
-                        }}
+                window.alert(mensagem)
+                document.location = urlDestino
+            }
+        }
         )
         .catch(() => window.alert("{ Error }"));
 
@@ -252,7 +312,7 @@ function fnCadastraAlteraUsuario(metodoHttp, id, name, login, email, senha, bio)
 
 //montagem do cabeçalho padrão para todas as telas
 function imprimeCabecalho() {
-   
+
     document.getElementById('cabecalho').innerHTML =
 
         `<nav class="navbar navbar-expand-lg bg-light">
