@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     },
     senha: {
         type: String,
-        required: false
+        required: false,
+        select: false
     },
     bio: {
         type: String,
@@ -24,7 +25,8 @@ const userSchema = new mongoose.Schema({
     },
     salt: {
         type: String,
-        required: true
+        required: true,
+        select: false
     },
     amigos: {
         type: Array(),
