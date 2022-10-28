@@ -8,7 +8,7 @@ const connect = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        console.log("Banco conectado",MONGODB_URI)
+       // console.log("Banco conectado",MONGODB_URI)
     } catch (error) {
         console.error("Erro: ", error.message)
     }
